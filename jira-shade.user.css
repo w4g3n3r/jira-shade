@@ -1,0 +1,157 @@
+/* ==UserStyle==
+
+@name           Jira Shade
+@namespace      github.com/w4g3n3r
+@version        1.0.0
+@description    Turn the brightness down on Jira
+@author         w4g3n3r
+@license        BSD
+@preprocessor   default
+
+==/UserStyle== */
+@-moz-document regexp("https://.*\\.atlassian.net/.*"),
+regexp("https://app.tempo.io/.*") {
+
+    html {
+        scrollbar-color: #222 #333;
+    }
+    
+    body * {
+        background-color: transparent !important;
+        color: inherit !important;
+        box-shadow: unset !important;
+    }
+
+    /* Dark Background */
+    body,
+    [data-testid="Navigation"]{
+        background-color: #181818 !important;
+        color: #bbb !important;
+    }
+    
+    /* Medium Background */
+    .gadget-container,
+    .atlaskit-portal-container div,
+    header,
+    header div,
+    .ghx-column,
+    #create-issue-dialog input,
+    #create-issue-dialog textarea,
+    #create-issue-dialog select,
+    #root,
+    div[name="calendarListViewDay"] > div > div > div {
+        background-color: #222 !important;
+        background-image: none !important;
+    }
+    
+    /* Light Background */
+    #jira-frontend div[data-testid="Content"],
+    #content,
+    #content header,
+    .header-section-primary,
+    .saved-search-operations,
+    [data-test-id="issue.activity.comment"],
+    #jira-issue-header,
+    [data-test-id="issue.views.issue-details.issue-layout.left-most-column"] span > span > div,
+    .js-issue,
+    #create-issue-dialog .drop-menu,
+    #create-issue-dialog .aui-ss,
+    #create-issue-dialog .jira-multi-select,
+    #tempo-container,
+    #tempoIssuesSidePanel,
+    #tempo-nav nav * {
+        background-color: #282828 !important;
+        background-image: none !important;
+    }
+    
+    
+    /* Extra Light Background */
+    footer,
+    [data-placement="bottom-start"],
+    [role="menu"],
+    [class$="menu"]:not(.gadget-menu),
+    [class$="dialog"],
+    [role="dialog"],
+    #tools-dropdown-items,
+    #board-tools-section-button_drop,
+    #create-issue-dialog,
+    .aui-list,
+    .aui-dropdown2,
+    .suggestions,
+    .focused,
+    .resize-card-wrapper,
+    [data-testid="headerContent"],
+    [data-type="OFFICE_365_EVENT"],
+    div[name="calendarListViewDay"] > div > div > div{
+        background-color: #333 !important;
+        background-image: none !important;
+    }
+
+    #content {
+        margin-left: 0px !important;
+        padding-left: 30px !important;
+    }
+    
+    #create-issue-dialog label {
+        margin-bottom: 10px;
+    }
+    
+    svg,
+    button > span {
+        color: #c8c8c8 !important;
+    }
+    
+
+    #jira-frontend div[data-testid="Content"] {
+        background-color: #282828 !important;
+        color: #bbb !important;
+        overflow-y: scroll;
+    }
+    
+    [class*="drop-zone"] {
+        border: none !important;
+    }
+
+    div:after,
+    div:before {
+        background: none !important;
+        box-shadow: unset !important;
+        background-color: transparent !important;
+    }
+
+    section section > div {
+        border-style: solid !important;
+        border-width: 1px 1px 1px 20px !important;
+        border-color: #454545 !important;
+    }
+
+    thead,
+    tbody,
+    input,  
+    textarea,
+    select,
+    .focused,
+    [data-placement="bottom-start"]:nth-child(2),
+    [name="calendarListViewDay"] > div > div > div,
+    [class$="control"],
+    a[role="listitem"],
+    .wiki-edit-toolbar,
+    [data-testid^="issuecard"],
+    [data-testid="cell"],
+    [data-testid="toolbar"],
+    [data-testid="headerContent"],
+    [data-testid="tempo-navigation-header"],
+    [data-testid="calendarCanvasDayHeader"]{
+        border-color: #454545 !important;
+    }
+
+    a:hover,
+    a[target="_self"]:hover {
+        color: #777 !important;
+    }
+    
+    a:active,
+    a[target="_self"]:active {
+        box-shadow: none;
+    }
+}
