@@ -24,7 +24,7 @@ regexp("https://app.tempo.io/.*") {
 
     /* Dark Background */
     body,
-    [data-testid="Navigation"]{
+    [data-testid="Navigation"] {
         background-color: #181818 !important;
         color: #bbb !important;
     }
@@ -59,7 +59,8 @@ regexp("https://app.tempo.io/.*") {
     #create-issue-dialog .jira-multi-select,
     #tempo-container,
     #tempoIssuesSidePanel,
-    #tempo-nav nav * {
+    #tempo-nav nav * ,
+    #tempo-container > div > div{
         background-color: #282828 !important;
         background-image: none !important;
     }
@@ -82,7 +83,13 @@ regexp("https://app.tempo.io/.*") {
     .resize-card-wrapper,
     [data-testid="headerContent"],
     [data-type="OFFICE_365_EVENT"],
-    div[name="calendarListViewDay"] > div > div > div{
+    div[name="calendarListViewDay"] > div > div > div,
+    .fabric-editor-typeahead,
+    .mentionView-content-wrap > span > span,
+    .isOpen.miniMode > div,
+    #tempo-container button,
+    #tempo-container header,
+    #tempo-container header *{
         background-color: #333 !important;
         background-image: none !important;
     }
@@ -101,6 +108,10 @@ regexp("https://app.tempo.io/.*") {
         color: #c8c8c8 !important;
     }
     
+    .tempo-app-container path {
+        fill: #888 !important;        
+    }
+    
 
     #jira-frontend div[data-testid="Content"] {
         background-color: #282828 !important;
@@ -113,7 +124,8 @@ regexp("https://app.tempo.io/.*") {
     }
 
     div:after,
-    div:before {
+    div:before,
+    [data-test-id="issue.views.issue-base.context.ecosystem-glance-panel"] > div > div > div > div  {
         background: none !important;
         box-shadow: unset !important;
         background-color: transparent !important;
@@ -130,6 +142,8 @@ regexp("https://app.tempo.io/.*") {
     input,  
     textarea,
     select,
+    #tempo-container div,
+    #tempo-container button,
     .focused,
     [data-placement="bottom-start"]:nth-child(2),
     [name="calendarListViewDay"] > div > div > div,
@@ -141,7 +155,8 @@ regexp("https://app.tempo.io/.*") {
     [data-testid="toolbar"],
     [data-testid="headerContent"],
     [data-testid="tempo-navigation-header"],
-    [data-testid="calendarCanvasDayHeader"]{
+    [data-testid="calendarCanvasDayHeader"],
+    .akEditor{
         border-color: #454545 !important;
     }
 
