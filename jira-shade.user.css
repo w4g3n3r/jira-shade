@@ -8,42 +8,68 @@
 @license        BSD
 @preprocessor   default
 
+@var color	pageColor	        "Main page color"   	#181818
+@var color  textColor           "Text color"            #bbb
+@var color	headerColor	        "Header color"		    #222
+@var color  headerTextColor     "Header text color"     #999
+@var color	windowColor	        "Window color"		    #282828
+@var color	menuColor	        "Menu color"		    #333
+@var color  menuTextColor       "Menu text color"       #bbb
+@var color	accentColor	        "Accent color"		    #E2725B
+@var color  accentTextColor     "Accent text color"     #222
+@var color  scrollbarColor      "Scrollbar color"       #222
+@var color  scrollbarTrackColor "Scrollbar track color" #333
+@var color  borderColor         "Border color"          #444
+@var color  iconColor           "Icon color"            #999
+
 ==/UserStyle== */
 @-moz-document regexp("https://.*\\.atlassian.net/.*"),
-regexp("https://app.tempo.io/.*") {
+regexp("https://app.tempo.io/.*")
+{
 
-    html {
-        scrollbar-color: #222 #333;
+    html
+    {
+        scrollbar-color: var(--scrollbarColor) var(--scrollbarTrackColor);
     }
-    
-    body * {
-        background-color: transparent !important;
-        color: inherit !important;
+
+    body *
+    {
+        background-color: unset !important;
+        color: unset !important;
         box-shadow: unset !important;
     }
 
     /* Dark Background */
     body,
-    [data-testid="Navigation"] {
-        background-color: #181818 !important;
-        color: #bbb !important;
+    [data-testid="Navigation"]
+    {
+        background-color: var(--pageColor) !important;
+        color: var(--textColor) !important;
     }
     
+    /* Header Selectors */
+    header,
+    header button > span > span,
+    header button > span > span > span > span > svg
+    {
+        background-color: var(--headerColor) !important;
+        color: var(--headerTextColor) !important;
+    }
+
     /* Medium Background */
     .gadget-container,
     .atlaskit-portal-container div,
-    header,
-    header div,
     .ghx-column,
     #create-issue-dialog input,
     #create-issue-dialog textarea,
     #create-issue-dialog select,
     #root,
-    div[name="calendarListViewDay"] > div > div > div {
-        background-color: #222 !important;
+    div[name="calendarListViewDay"] > div > div > div
+    {
+        background-color: var(--headerColor) !important;
         background-image: none !important;
     }
-    
+
     /* Light Background */
     #jira-frontend div[data-testid="Content"],
     #content,
@@ -59,13 +85,14 @@ regexp("https://app.tempo.io/.*") {
     #create-issue-dialog .jira-multi-select,
     #tempo-container,
     #tempoIssuesSidePanel,
-    #tempo-nav nav * ,
-    #tempo-container > div > div{
-        background-color: #282828 !important;
+    #tempo-nav nav *,
+    #tempo-container > div > div
+    {
+        background-color: var(--windowColor) !important;
         background-image: none !important;
     }
-    
-    
+
+
     /* Extra Light Background */
     footer,
     [data-placement="bottom-start"],
@@ -89,57 +116,109 @@ regexp("https://app.tempo.io/.*") {
     .isOpen.miniMode > div,
     #tempo-container button,
     #tempo-container header,
-    #tempo-container header *{
-        background-color: #333 !important;
+    #tempo-container header *,
+    button,
+    .aui-button
+    {
+        color: var(--menuTextColor) !important;
+        background-color: var(--menuColor) !important;
         background-image: none !important;
     }
 
-    #content {
+    /* Accent Items */
+    a
+    {
+        color: var(--accentColor) !important;
+    }
+    .dashboard-item-title
+    {
+        border-color: var(--accentColor) !important;
+    }
+    
+    [data-testid="atlassian-navigation--primary-actions"] > div:after,
+    #createGlobalItem,
+    #createGlobalItem span
+    {
+        background-color: var(--accentColor) !important;
+        color: var(--accentTextColor) !important;
+    }
+
+    section section > div
+    {
+        border-style: solid !important;
+        border-width: 1px 1px 1px 20px !important;
+        border-color: var(--accentColor) !important;
+    }
+    
+    
+    /* Invisible Buttons */
+    header button,
+    #jira-issue-header button,
+    button[page],
+    button.miniMode,
+    .issue_view_permalink_button_wrapper button,
+    .favourite-btn
+    {
+        background-color: unset !important;
+    }
+    
+    /* Invisible Links */
+    .gadget-menu a,
+    .dashboard-item-content a,
+    .issue-table-container a,
+    header a
+    {
+        color: unset !important;
+    }
+
+    #content
+    {
         margin-left: 0px !important;
         padding-left: 30px !important;
     }
-    
-    #create-issue-dialog label {
+
+    #create-issue-dialog label
+    {
         margin-bottom: 10px;
     }
-    
-    svg,
-    button > span {
+
+    button > span
+    {
         color: #c8c8c8 !important;
     }
-    
-    .tempo-app-container path {
-        fill: #888 !important;        
-    }
-    
 
-    #jira-frontend div[data-testid="Content"] {
+    .tempo-app-container path
+    {
+        fill: #888 !important;
+    }
+
+
+    #jira-frontend div[data-testid="Content"]
+    {
         background-color: #282828 !important;
         color: #bbb !important;
         overflow-y: scroll;
     }
-    
-    [class*="drop-zone"] {
+
+    [class*="drop-zone"]
+    {
         border: none !important;
     }
 
     div:after,
     div:before,
-    [data-test-id="issue.views.issue-base.context.ecosystem-glance-panel"] > div > div > div > div  {
+    [data-test-id="issue.views.issue-base.context.ecosystem-glance-panel"] > div > div > div > div
+    {
         background: none !important;
         box-shadow: unset !important;
         background-color: transparent !important;
     }
 
-    section section > div {
-        border-style: solid !important;
-        border-width: 1px 1px 1px 20px !important;
-        border-color: #454545 !important;
-    }
+
 
     thead,
     tbody,
-    input,  
+    input,
     textarea,
     select,
     #tempo-container div,
@@ -156,17 +235,31 @@ regexp("https://app.tempo.io/.*") {
     [data-testid="headerContent"],
     [data-testid="tempo-navigation-header"],
     [data-testid="calendarCanvasDayHeader"],
-    .akEditor{
-        border-color: #454545 !important;
+    .akEditor
+    {
+        border-color: var(--borderColor) !important;
     }
 
     a:hover,
-    a[target="_self"]:hover {
+    a[target="_self"]:hover
+    {
         color: #777 !important;
     }
-    
+
     a:active,
-    a[target="_self"]:active {
+    a[target="_self"]:active
+    {
         box-shadow: none;
+    }
+    
+    /* Icon Tweaks */
+    svg
+    {
+        color: var(--iconColor) !important;
+    }
+    
+    [aria-label="Help"] 
+    {
+        fill: unset !important;
     }
 }
