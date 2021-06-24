@@ -9,12 +9,13 @@
 @preprocessor   default
 
 @var color	pageColor	        "Main page color"   	#181818
-@var color  textColor           "Text color"            #bbb
+@var color  textColor           "Text color"            #aaa
 @var color	headerColor	        "Header color"		    #222
 @var color  headerTextColor     "Header text color"     #999
 @var color	windowColor	        "Window color"		    #282828
 @var color	menuColor	        "Menu color"		    #333
-@var color  menuTextColor       "Menu text color"       #bbb
+@var color  menuTextColor       "Menu text color"       #aaa
+@var color  linkTextColor       "Text link color"       #ccc
 @var color	accentColor	        "Accent color"		    #E2725B
 @var color  accentTextColor     "Accent text color"     #222
 @var color  scrollbarColor      "Scrollbar color"       #222
@@ -41,11 +42,19 @@ regexp("https://app.tempo.io/.*")
 
     /* Dark Background */
     body,
-    [data-testid="Navigation"]
+    [data-testid="Navigation"],
+    header[data-test-id$="dashboard-header"],
+    header#jira-issue-header,
+    button[data-grab-area="true"],
+    #ak-main-content > div > div > div,
+    .atlaskit-portal div[data-focus-lock-disabled="false"] *,
+    [data-test-id="issue.views.issue-details.issue-layout.left-most-column"] span > span > div,
+    [data-test-id="issue.activity.comment"]
     {
         background-color: var(--pageColor) !important;
         color: var(--textColor) !important;
     }
+    
     
     /* Header Selectors */
     header,
@@ -58,13 +67,13 @@ regexp("https://app.tempo.io/.*")
 
     /* Medium Background */
     .gadget-container,
-    .atlaskit-portal-container div,
     .ghx-column,
     #create-issue-dialog input,
     #create-issue-dialog textarea,
     #create-issue-dialog select,
-    #root,
-    div[name="calendarListViewDay"] > div > div > div
+    #ak-side-navigation > div,
+    div[name="calendarListViewDay"] > div > div > div,
+    div[data-resize-control="true"]
     {
         background-color: var(--headerColor) !important;
         background-image: none !important;
@@ -76,10 +85,10 @@ regexp("https://app.tempo.io/.*")
     #content header,
     .header-section-primary,
     .saved-search-operations,
-    [data-test-id="issue.activity.comment"],
-    #jira-issue-header,
-    [data-test-id="issue.views.issue-details.issue-layout.left-most-column"] span > span > div,
-    .js-issue,
+    .js-issue,    
+    .atlaskit-portal-container div,    
+    #root,
+    #root div + div,    
     #create-issue-dialog .drop-menu,
     #create-issue-dialog .aui-ss,
     #create-issue-dialog .jira-multi-select,
@@ -95,6 +104,7 @@ regexp("https://app.tempo.io/.*")
 
     /* Extra Light Background */
     footer,
+    .atlaskit-portal-container div,  
     [data-placement="bottom-start"],
     [role="menu"],
     [class$="menu"]:not(.gadget-menu),
@@ -118,7 +128,8 @@ regexp("https://app.tempo.io/.*")
     #tempo-container header,
     #tempo-container header *,
     button,
-    .aui-button
+    .aui-button, 
+    div[data-test-id="issue.views.issue-base.foundation.status.status-field-wrapper"] div[data-placement="bottom-start"] *
     {
         color: var(--menuTextColor) !important;
         background-color: var(--menuColor) !important;
@@ -128,6 +139,9 @@ regexp("https://app.tempo.io/.*")
     /* Accent Items */
     a
     {
+        color: var(--linkTextColor) !important;
+    }
+    a:hover {
         color: var(--accentColor) !important;
     }
     .dashboard-item-title
@@ -137,7 +151,10 @@ regexp("https://app.tempo.io/.*")
     
     [data-testid="atlassian-navigation--primary-actions"] > div:after,
     #createGlobalItem,
-    #createGlobalItem span
+    #createGlobalItem span,
+    div[data-test-id="issue.views.issue-base.foundation.status.status-field-wrapper"] button[type="button"],
+    div[data-test-id="issue.views.issue-base.foundation.status.status-field-wrapper"] button[type="button"]:hover,
+    div[data-test-id="issue.views.issue-base.foundation.status.status-field-wrapper"] button[type="button"] span
     {
         background-color: var(--accentColor) !important;
         color: var(--accentTextColor) !important;
@@ -148,7 +165,7 @@ regexp("https://app.tempo.io/.*")
         border-style: solid !important;
         border-width: 1px 1px 1px 20px !important;
         border-color: var(--accentColor) !important;
-    }
+    }  
     
     
     /* Invisible Buttons */
@@ -161,6 +178,18 @@ regexp("https://app.tempo.io/.*")
     {
         background-color: unset !important;
     }
+    
+    /* Padding Tweaks */
+    #ak-main-content
+    {
+        padding-left: 5px;
+    }
+    .atlaskit-portal[style="z-index: 400;"] > div > div
+    {
+        padding-left: 0px;
+        padding-top: 0px;
+    }
+    
     
     /* Invisible Links */
     .gadget-menu a,
